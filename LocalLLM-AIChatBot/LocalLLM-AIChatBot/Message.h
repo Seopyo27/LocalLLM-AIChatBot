@@ -2,9 +2,16 @@
 
 #include <string>
 
-// A struct groups related data without adding advanced class behavior yet.
-struct Message
+class Message
 {
-    std::string role;
-    std::string content;
+public:
+    Message(const std::string& role, const std::string& content);
+    ~Message();
+
+    const std::string& getRole() const;
+    const std::string& getContent() const;
+
+private:
+    std::string role_;
+    std::string content_;
 };

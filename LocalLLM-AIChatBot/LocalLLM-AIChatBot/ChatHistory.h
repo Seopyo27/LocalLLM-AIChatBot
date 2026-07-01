@@ -5,6 +5,16 @@
 
 #include "Message.h"
 
-void addMessage(std::vector<Message>& history, const std::string& role, const std::string& content);
-void printHistory(const std::vector<Message>& history);
-void findMessages(const std::vector<Message>& history, const std::string& keyword);
+class ChatHistory
+{
+public:
+    ChatHistory();
+    ~ChatHistory();
+
+    void addMessage(const std::string& role, const std::string& content);
+    void printHistory() const;
+    void findMessages(const std::string& keyword) const;
+
+private:
+    std::vector<Message> messages_;
+};
