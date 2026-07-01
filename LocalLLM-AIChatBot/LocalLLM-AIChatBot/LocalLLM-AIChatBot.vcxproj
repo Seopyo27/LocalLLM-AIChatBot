@@ -84,6 +84,7 @@
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
+      <AdditionalDependencies>winhttp.lib;%(AdditionalDependencies)</AdditionalDependencies>
        <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
@@ -99,6 +100,7 @@
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
+      <AdditionalDependencies>winhttp.lib;%(AdditionalDependencies)</AdditionalDependencies>
        <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
@@ -112,6 +114,7 @@
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
+      <AdditionalDependencies>winhttp.lib;%(AdditionalDependencies)</AdditionalDependencies>
        <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
@@ -127,6 +130,7 @@
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
+      <AdditionalDependencies>winhttp.lib;%(AdditionalDependencies)</AdditionalDependencies>
        <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
@@ -134,6 +138,7 @@
   <ItemGroup>
     <ClCompile Include="ChatBot.cpp" />
     <ClCompile Include="ChatHistory.cpp" />
+    <ClCompile Include="LocalLLMClient.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Message.cpp" />
     <ClCompile Include="ResponseGenerator.cpp" />
@@ -141,6 +146,7 @@
   <ItemGroup>
     <ClInclude Include="ChatBot.h" />
     <ClInclude Include="ChatHistory.h" />
+    <ClInclude Include="LocalLLMClient.h" />
     <ClInclude Include="Message.h" />
     <ClInclude Include="ResponseGenerator.h" />
   </ItemGroup>
