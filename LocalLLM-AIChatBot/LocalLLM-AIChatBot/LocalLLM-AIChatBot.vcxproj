@@ -132,7 +132,14 @@
   </ItemDefinitionGroup>
 
   <ItemGroup>
+    <ClCompile Include="ChatHistory.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="ResponseGenerator.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="ChatHistory.h" />
+    <ClInclude Include="Message.h" />
+    <ClInclude Include="ResponseGenerator.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
