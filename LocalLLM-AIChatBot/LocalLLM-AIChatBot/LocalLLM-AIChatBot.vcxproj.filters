@@ -15,10 +15,16 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="ChatBot.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
     <ClCompile Include="ChatHistory.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="main.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Message.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="ResponseGenerator.cpp">
@@ -26,6 +32,9 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ChatBot.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
     <ClInclude Include="ChatHistory.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>

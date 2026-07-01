@@ -15,19 +15,21 @@ static std::string toLowerCaseForSearch(const std::string& text)
     return result;
 }
 
-void addMessage(std::vector<Message>& history, const std::string& role, const std::string& content)
+ChatHistory::ChatHistory() = default;
+
+ChatHistory::~ChatHistory() = default;
+
+void ChatHistory::addMessage(const std::string& role, const std::string& content)
 {
-    Message message;
-    message.role = role;
-    message.content = content;
+    Message message(role, content);
 
     // vector stores messages in the same order they are added.
-    history.push_back(message);
+    messages_.push_back(message);
 }
 
-void printHistory(const std::vector<Message>& history)
+void ChatHistory::printHistory() const
 {
-    if (history.empty())
+    if (messages_.empty())
     {
         std::cout << "No conversation history yet.\n\n";
         return;
@@ -36,15 +38,15 @@ void printHistory(const std::vector<Message>& history)
     std::cout << "Conversation history:\n";
 
     // This loop visits each saved message in order.
-    for (const Message& message : history)
+    for (const Message& message : messages_)
     {
-        std::cout << message.role << ": " << message.content << '\n';
+        std::cout << message.getRole() << ": " << message.getContent() << '\n';
     }
 
     std::cout << '\n';
 }
 
-void findMessages(const std::vector<Message>& history, const std::string& keyword)
+void ChatHistory::findMessages(const std::string& keyword) const
 {
     if (keyword.empty())
     {
@@ -52,7 +54,7 @@ void findMessages(const std::vector<Message>& history, const std::string& keywor
         return;
     }
 
-    if (history.empty())
+    if (messages_.empty())
     {
         std::cout << "No conversation history yet.\n\n";
         return;
@@ -64,13 +66,13 @@ void findMessages(const std::vector<Message>& history, const std::string& keywor
     std::cout << "Search results for \"" << keyword << "\":\n";
 
     // The vector is searched from first message to last message.
-    for (const Message& message : history)
+    for (const Message& message : messages_)
     {
-        const std::string lowerContent = toLowerCaseForSearch(message.content);
+        const std::string lowerContent = toLowerCaseForSearch(message.getContent());
 
         if (lowerContent.find(lowerKeyword) != std::string::npos)
         {
-            std::cout << message.role << ": " << message.content << '\n';
+            std::cout << message.getRole() << ": " << message.getContent() << '\n';
             found = true;
         }
     }
