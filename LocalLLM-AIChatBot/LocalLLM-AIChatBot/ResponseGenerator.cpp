@@ -37,7 +37,7 @@ std::map<std::string, std::string> createDefaultResponses()
     return keywordResponses;
 }
 
-std::string generateResponse(const std::string& userInput, const std::map<std::string, std::string>& keywordResponses)
+bool tryGenerateKeywordResponse(const std::string& userInput, const std::map<std::string, std::string>& keywordResponses, std::string& response)
 {
     const std::string lowerInput = toLowerCase(userInput);
 
@@ -46,8 +46,22 @@ std::string generateResponse(const std::string& userInput, const std::map<std::s
     {
         if (lowerInput.find(entry.first) != std::string::npos)
         {
-            return entry.second;
+            response = entry.second;
+            return true;
         }
+    }
+
+    response.clear();
+    return false;
+}
+
+std::string generateResponse(const std::string& userInput, const std::map<std::string, std::string>& keywordResponses)
+{
+    std::string response;
+
+    if (tryGenerateKeywordResponse(userInput, keywordResponses, response))
+    {
+        return response;
     }
 
     return "I do not understand deeply yet, but I saved your message.";

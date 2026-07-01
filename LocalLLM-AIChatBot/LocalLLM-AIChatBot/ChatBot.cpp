@@ -7,7 +7,8 @@
 
 ChatBot::ChatBot()
     : history_(std::make_unique<ChatHistory>()),
-      keywordResponses_(createDefaultResponses())
+      keywordResponses_(createDefaultResponses()),
+      localLLMClient_()
 {
 }
 
@@ -169,7 +170,17 @@ void ChatBot::run()
 
         history_->addMessage("User", userInput);
 
-        const std::string botResponse = generateResponse(userInput, keywordResponses_);
+        std::string botResponse;
+
+        if (!tryGenerateKeywordResponse(userInput, keywordResponses_, botResponse))
+        {
+            // If no keyword matches, ask the local Ollama API for a response.
+            if (!localLLMClient_.generateResponse(userInput, botResponse))
+            {
+                botResponse = "Local LLM response could not be fetched. The message was saved with the existing flow.";
+            }
+        }
+
         history_->addMessage("Bot", botResponse);
 
         std::cout << "Bot: " << botResponse << "\n\n";

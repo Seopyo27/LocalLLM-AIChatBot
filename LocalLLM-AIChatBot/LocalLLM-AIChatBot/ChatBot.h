@@ -5,6 +5,7 @@
 #include <string>
 
 #include "ChatHistory.h"
+#include "LocalLLMClient.h"
 
 class ChatBot
 {
@@ -17,6 +18,7 @@ public:
 private:
     std::unique_ptr<ChatHistory> history_;
     std::map<std::string, std::string> keywordResponses_;
+    LocalLLMClient localLLMClient_;
 
     void printWelcome() const;
     void printHelp() const;
