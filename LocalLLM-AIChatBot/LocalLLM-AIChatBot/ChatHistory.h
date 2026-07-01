@@ -7,3 +7,4 @@
 
 void addMessage(std::vector<Message>& history, const std::string& role, const std::string& content);
 void printHistory(const std::vector<Message>& history);
+void findMessages(const std::vector<Message>& history, const std::string& keyword);
